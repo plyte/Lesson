@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaderboard</title>
+    </head>
+    <body>
+        <h2>Leaderboard</h2>
+
+        <button onclick='addScore()'>Add score</button>
+
+        <br/><br/>
+
+        <button onclick='generateLeaderboard()'>Generate Leaderboard</button>
+
+          <script>
+
+              var names = [];
+              var scores = [];
+
+
+              function randomNumber(){
+                return Math.floor(Math.random()*(20000-1000+1)+1000);
+              }
+
+              function showLeaderboard(){
+
+                console.log(names[0] + ' | ' + scores[0]);
+                console.log(names[1] + ' | ' + scores[1]);
+                console.log(names[2] + ' | ' + scores[2]);
+                console.log(names[3] + ' | ' + scores[3]);
+                console.log(names[4] + ' | ' + scores[4]);
+
+              }
+
+              function addScore(){
+                var name = prompt('What name do you want to add?');
+                var score = prompt('What is this players score?');
+
+                addToLeaderboard(name, score);
+                showLeaderboard();
+              }
+
+              function generateLeaderboard(){
+                addToLeaderboard('Jimmy', randomNumber());
+                addToLeaderboard('John', randomNumber());
+                addToLeaderboard('James', randomNumber());
+                addToLeaderboard('Jake', randomNumber());
+                addToLeaderboard('Jack', randomNumber());
+
+                showLeaderboard();
+              }
+
+              function addToLeaderboard(name, score){
+                names.unshift(name);
+                scores.unshift(score);
+
+                if (names.length > 5){
+                  names.pop();
+                  scores.pop();
+                }
+              }
+          </script>
+    </body>
+</html>
